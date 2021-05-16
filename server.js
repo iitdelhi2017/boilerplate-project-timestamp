@@ -39,7 +39,7 @@ var curr_time=function(req,res){
     if(isNaN(req.params.date))
       res.json({"unix":(Date.parse(new Date(req.params.date))).toString(),"utc":(new Date(req.params.date)).toUTCString()});
 
-    else res.json({"unix":req.params.date,"utc":(new Date(parseInt(req.params.date))).toUTCString()});
+    else res.json({"unix":(Date.parse(req.params.date)).toString(),"utc":(new Date(parseInt(req.params.date))).toUTCString()});
   };
 };
 
