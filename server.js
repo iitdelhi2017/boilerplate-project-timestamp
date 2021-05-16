@@ -30,16 +30,16 @@ var curr_time=function(req,res){
   //console.log(req.params);
   //console.log(req.query);
   if(req.params.date==undefined){
-    res.json({"unix":(Date.parse(new Date())).toString(),"utc":(new Date()).toUTCString()});
+    res.json({"unix":Date.parse(new Date()),"utc":(new Date()).toUTCString()});
   }
   else if(isNaN(req.params.date) && isNaN(Date.parse(req.params.date))){
     res.json({"error":"Invalid Date"});
   }
   else{
     if(isNaN(req.params.date))
-      res.json({"unix":(Date.parse(new Date(req.params.date))).toString(),"utc":(new Date(req.params.date)).toUTCString()});
+      res.json({"unix":Date.parse(new Date(req.params.date)),"utc":(new Date(req.params.date)).toUTCString()});
 
-    else res.json({"unix":(Date.parse(req.params.date)).toString(),"utc":(new Date(parseInt(req.params.date))).toUTCString()});
+    else res.json({"unix":parseInt(req.params.date),"utc":(new Date(parseInt(req.params.date))).toUTCString()});
   };
 };
 
